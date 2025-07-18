@@ -1,6 +1,7 @@
 <?php
 /**
- * Plugin Name: Member Directory
+ * Plugin Name: MdK Member Directory
+ * Update URI: false
  * Description: A custom plugin for managing members and teams, featuring a frontend directory and contact form.
  * Version: 1.0
  * Author: Md. Kamruzzaman
