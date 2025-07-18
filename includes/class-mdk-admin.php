@@ -75,7 +75,7 @@ class MDK_Admin {
             </select>
         </p>
         <?php
-        // Teams
+        // Teams relationship meta box
         $selected_teams = get_post_meta($post->ID, 'mdk_teams', true);
         $selected_teams = is_array($selected_teams) ? $selected_teams : [];
 
@@ -83,11 +83,13 @@ class MDK_Admin {
             'post_type'   => 'mdk_team',
             'numberposts' => -1,
             'post_status' => 'publish',
+            'orderby'     => 'title',
+            'order'       => 'ASC',
         ]);
         ?>
         <p>
             <label><?php _e('Teams', 'member-directory'); ?></label><br>
-            <select name="mdk_teams[]" multiple class="widefat">
+            <select name="mdk_teams[]" multiple class="widefat" size="5">
                 <?php foreach ($teams as $team): ?>
                     <option value="<?php echo esc_attr($team->ID); ?>" <?php selected(in_array($team->ID, $selected_teams)); ?>>
                         <?php echo esc_html($team->post_title); ?>
@@ -185,10 +187,12 @@ class MDK_Admin {
             'meta_key'    => 'mdk_member_id',
             'meta_value'  => $post->ID,
             'post_status' => 'publish',
+            'orderby'    => 'date',
+            'order'      => 'DESC',
         ]);
 
         if (empty($messages)) {
-            echo '<p>No messages yet.</p>';
+            echo '<p>' . __('No messages yet.', 'member-directory') . '</p>';
             return;
         }
 

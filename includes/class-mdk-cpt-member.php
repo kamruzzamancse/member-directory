@@ -35,8 +35,11 @@ class MDK_CPT_Member {
             'label'               => __('Members', 'member-directory'),
             'labels'              => $labels,
             'public'              => true,
-            'has_archive'         => false,
-            'rewrite'             => false, // We'll customize the URL later
+            'has_archive'         => true,
+            'rewrite'             => [
+                'slug' => 'member',
+                'with_front' => false,
+            ],
             'show_ui'             => true,
             'show_in_menu'        => true,
             'supports'            => ['title', 'thumbnail', 'editor'],
